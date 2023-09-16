@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 
-function InfoCard({ fallacyName }) {
+function InfoCard({ fallacyName, fallacyExplanation }) {
     return (
         <>
             <div className="border-2 border-gray-300 rounded-md p-2">
                 <p>{fallacyName}</p>
-                <p>*explanation for fallacy*</p>
+                <p>{fallacyExplanation}</p>
             </div>
         </>
     );
@@ -13,6 +13,7 @@ function InfoCard({ fallacyName }) {
 
 InfoCard.propTypes = {
     fallacyName: PropTypes.string.isRequired,
+    fallacyExplanation: PropTypes.string
 };
 
 export default InfoCard;
