@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function TextHighlight({fallacy, toggleInfo}) {
+function TextHighlight({fallacy, toggleInfo, setSelectedFallacy}) {
     return (
         <>
             <p className="border-2 border-gray-300 rounded-md p-2">
@@ -10,7 +10,10 @@ function TextHighlight({fallacy, toggleInfo}) {
                         <span 
                         key={obj.text} 
                         className='bg-blue-500'
-                        onClick={() => toggleInfo()}
+                        onClick={() => {
+                            toggleInfo()
+                            setSelectedFallacy(obj)
+                        }}
                         >
                             {obj.text}.
                         </span>
@@ -25,7 +28,8 @@ function TextHighlight({fallacy, toggleInfo}) {
 
 TextHighlight.propTypes = {
     fallacy: PropTypes.array.isRequired,
-    toggleInfo: PropTypes.func.isRequired
+    toggleInfo: PropTypes.func.isRequired,
+    setSelectedFallacy: PropTypes.func.isRequired
 };
 
 export default TextHighlight;

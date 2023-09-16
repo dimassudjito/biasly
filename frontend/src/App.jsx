@@ -11,6 +11,7 @@ function App() {
   const [content, setContent] = useState('')
   const [showInfo, setShowInfo] = useState(false)
   const [fallacy, setFallacy] = useState([])
+  const [selectedFallacy, setSelectedFallacy] = useState(null)
 
   const editContent = (content) => {
     setContent(content)
@@ -51,8 +52,8 @@ function App() {
       </button>
       <div className="grid grid-cols-2 gap-4">
         {mode == 'write' ? <TextInput content={content} editContent={editContent}/> 
-        : <TextHighlight fallacy={fallacy} toggleInfo={toggleInfo}/>}
-        {showInfo ? <InfoCard/> : null}
+        : <TextHighlight fallacy={fallacy} toggleInfo={toggleInfo} setSelectedFallacy={setSelectedFallacy}/>}
+        {showInfo ? <InfoCard fallacyName={selectedFallacy.label}/> : null}
       </div>
     </>
   )
