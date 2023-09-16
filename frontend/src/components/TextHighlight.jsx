@@ -1,11 +1,17 @@
-function TextHighlight() {
+import PropTypes from 'prop-types';
 
-    return (
-      <>
-        <h1 className="">Text Highlight</h1> 
-      </>
-    )
-  }
-  
-  export default TextHighlight
+function TextHighlight({content}) {
+
+        return (
+            <>
+                <h1 className="border-2 border-gray-300 rounded-md p-2">{content}</h1> 
+            </>
+        )
+    }
+
+TextHighlight.propTypes = {
+    content: PropTypes.string.isRequired,
+};
+
+export default TextHighlight;
   
