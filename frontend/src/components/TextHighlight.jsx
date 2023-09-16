@@ -1,25 +1,22 @@
 import PropTypes from 'prop-types';
 
-function TextHighlight({content, toggleInfo}) {
-    const fullText = content.split('.')
-    const highText = "Happy Birthday"
-
+function TextHighlight({fallacy, toggleInfo}) {
     return (
         <>
             <p className="border-2 border-gray-300 rounded-md p-2">
-                {fullText.map(element => {
-                    if (element.includes(highText)) {
+                {fallacy.map(obj => {
+                    if (obj.label != "No Fallacy") {
                         return (
                         <span 
-                        key={element} 
+                        key={obj.text} 
                         className='bg-blue-500'
                         onClick={() => toggleInfo()}
                         >
-                            {element}.
+                            {obj.text}.
                         </span>
                         )
                     }
-                    return <span key={element}>{element}.</span>
+                    return <span key={obj.text}>{obj.text}.</span>
                 })}
             </p> 
         </>
@@ -27,7 +24,7 @@ function TextHighlight({content, toggleInfo}) {
 }
 
 TextHighlight.propTypes = {
-    content: PropTypes.string.isRequired,
+    fallacy: PropTypes.array.isRequired,
     toggleInfo: PropTypes.func.isRequired
 };
 

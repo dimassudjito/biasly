@@ -10,6 +10,7 @@ function App() {
   const [mode, setMode] = useState('write')
   const [content, setContent] = useState('')
   const [showInfo, setShowInfo] = useState(false)
+  const [fallacy, setFallacy] = useState([])
 
   const editContent = (content) => {
     setContent(content)
@@ -31,8 +32,12 @@ function App() {
       },
       body: JSON.stringify(CLASSIFY_REQUEST_BODY),
     })
-    var body = await response.json()
-    console.log(body)
+    const body = await response.json()
+    const fallacies = body.classifications.map((classification) => {
+      const obj = {text: classification.input, label: classification.prediction};
+      return obj
+    })
+    setFallacy(fallacies)
   }
 
   return (
@@ -45,7 +50,8 @@ function App() {
         {mode == 'write' ? 'Evaluate' : 'Edit'}
       </button>
       <div className="grid grid-cols-2 gap-4">
-        {mode == 'write' ? <TextInput content={content} editContent={editContent}/> : <TextHighlight content={content} toggleInfo={toggleInfo}/>}
+        {mode == 'write' ? <TextInput content={content} editContent={editContent}/> 
+        : <TextHighlight fallacy={fallacy} toggleInfo={toggleInfo}/>}
         {showInfo ? <InfoCard/> : null}
       </div>
     </>
