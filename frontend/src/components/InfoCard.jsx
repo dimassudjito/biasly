@@ -2,7 +2,10 @@ function InfoCard() {
 
     return (
       <>
-        <h1 className="">Info Card</h1> 
+        <div className="border-2 border-gray-300 rounded-md p-2">
+            <p>*fallacy name*</p>
+            <p>*explanation for fallacy*</p>
+        </div>
       </>
     )
   }

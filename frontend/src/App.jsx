@@ -6,9 +6,14 @@ import {Header, TextInput, InfoCard, TextHighlight} from './components'
 function App() {
   const [mode, setMode] = useState('write')
   const [content, setContent] = useState('')
+  const [showInfo, setShowInfo] = useState(false)
 
   const editContent = (content) => {
     setContent(content)
+  }
+
+  const toggleInfo = () => {
+    setShowInfo(!showInfo)
   }
 
   return (
@@ -21,8 +26,8 @@ function App() {
         {mode == 'write' ? 'Evaluate' : 'Edit'}
       </button>
       <div className="grid grid-cols-2 gap-4">
-        {mode == 'write' ? <TextInput content={content} editContent={editContent}/> : <TextHighlight content={content}/>}
-        <InfoCard />
+        {mode == 'write' ? <TextInput content={content} editContent={editContent}/> : <TextHighlight content={content} toggleInfo={toggleInfo}/>}
+        {showInfo ? <InfoCard/> : null}
       </div>
     </>
   )
