@@ -1,10 +1,10 @@
-function App() {
+function Header() {
 
   return (
     <>
-      <h1 className="">Biasly</h1> 
+      <h1 className="mb-4">Biasly</h1> 
     </>
   )
 }
 
-export default App
+export default Header
