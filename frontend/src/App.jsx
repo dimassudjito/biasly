@@ -21,7 +21,8 @@ function App() {
 
   const evaluateContent = async () => {
     setMode(mode == 'write' ? 'highlight' : 'write')
-    CLASSIFY_REQUEST_BODY.inputs = content.split('.')
+    const inputs = content.split('.').filter((sentence) => sentence.length > 0)
+    CLASSIFY_REQUEST_BODY.inputs = inputs
     const response = await fetch(CLASSIFY_API, {
       method: 'POST',
       headers: {
