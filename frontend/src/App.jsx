@@ -66,10 +66,14 @@ function App() {
   return (
     <>
       <Header evaluateContent={evaluateContent} mode={mode}/>
-      <div className="grid grid-cols-2 gap-4">
-        {mode == 'write' ? <TextInput content={content} editContent={editContent}/> 
+      <div className="grid grid-cols-12 gap-4 mt-4">
+        <div className="col-span-8">
+          {mode == 'write' ? <TextInput content={content} editContent={editContent}/> 
         : <TextHighlight fallacy={fallacy} toggleInfo={toggleInfo} setSelectedFallacy={setSelectedFallacy}/>}
-        {showInfo ? <InfoCard fallacyName={selectedFallacy.label} fallacyExplanation={selectedFallacy.explanation}/> : null}
+        </div>
+        <div className="col-span-4">
+          {showInfo ? <InfoCard fallacyName={selectedFallacy.label} fallacyExplanation={selectedFallacy.explanation}/> : null}
+        </div> 
       </div>
     </>
   )
