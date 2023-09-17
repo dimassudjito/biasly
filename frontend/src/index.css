@@ -7,3 +7,6 @@
     font-weight: normal;
     font-style: normal;
   }
+textarea::placeholder {
+    color: black;
+  }
