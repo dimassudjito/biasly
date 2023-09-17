@@ -18,6 +18,7 @@ function App() {
 
   const editContent = (content) => {
     setContent(content)
+    setFallacy([])
   }
 
   const toggleInfo = () => {
