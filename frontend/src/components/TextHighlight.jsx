@@ -3,16 +3,19 @@ import PropTypes from 'prop-types';
 function TextHighlight({fallacy, toggleInfo, setSelectedFallacy}) {
     return (
         <>
-            <p className="border-2 border-gray-300 rounded-md p-2">
+            <p className="border-black p-2 w-full h-screen bg-purple-300 text-left" style={{ borderWidth: '3px'}}>
                 {fallacy.map(obj => {
                     if (obj.label != "No Fallacy") {
                         return (
                         <span 
                         key={obj.text} 
-                        className='bg-blue-500'
-                        onClick={() => {
+                        className='bg-yellow-500 hover:opacity-50'
+                        onMouseEnter={() => {
                             toggleInfo()
                             setSelectedFallacy(obj)
+                        }}
+                        onMouseLeave={() => {
+                            toggleInfo()
                         }}
                         >
                             {obj.text}.
